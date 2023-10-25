@@ -1,24 +1,29 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+emailjs.init('YOUR_USER_ID');
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+document.querySelector('form').addEventListener('submit', function (event) {
+  event.preventDefault();
 
-setupCounter(document.querySelector('#counter'))
+  // Get form data
+  const formData = new FormData(event.target);
+
+  // Prepare email parameters
+  const emailParams = {
+    to_name: formData.get('fullName'),
+    from_name: formData.get('email'),
+    message: formData.get('message'),
+  };
+
+  // Send email using EmailJS service
+  emailjs
+    .send('YOUR_EMAIL_SERVICE_ID', 'YOUR_EMAIL_TEMPLATE_ID', emailParams)
+    .then(
+      function (response) {
+        console.log('Email sent successfully:', response);
+        // You can redirect the user to a success page or show a success message here
+      },
+      function (error) {
+        console.error('Email failed to send:', error);
+        // Handle email sending failure (e.g., show an error message to the user)
+      }
+    );
+});
