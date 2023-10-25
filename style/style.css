@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=Inter:400,500,600,700,800,900&display=swap');
+
+* {
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  text-decoration: none;
+  list-style: none;
+  transition: all 0.5s;
+}
+
+/* Body */
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  display: grid;
+  grid-template-areas:
+    'n n n n n n'
+    'h h h h h h'
+    'm m m m m m'
+    'a a a a a a'
+    'f f f f f f';
+}
+
+/* Navbar */
+nav {
+  grid-area: n;
+}
+/* Header */
+header {
+  grid-area: h;
+  background: black;
+}
+/* Main */
+main {
+  grid-area: m;
+  min-height: 60vh;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  background: red
+    url('https://img.freepik.com/free-vector/zebra-print-background_125540-1011.jpg?w=1380&t=st=1698221657~exp=1698222257~hmac=d9925ea7a6e0921852c27bb5fc43f4320cfaac82b2be1ff0406859261b1722b6')
+    no-repeat center center/cover;
+}
+/* Aside */
+aside {
+  grid-area: a;
+  padding: 1rem;
+  background: #a5d0f0;
+}
+/* Footer */
+footer {
+  grid-area: f;
+}
+
+/* h1 */
+h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 1rem;
+  padding: 1rem;
+  color: white;
+}
+
+main article {
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 15px;
+  border: 1px solid black;
+  background-color: #f4f6e2;
+}
+
+nav,
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 0.7rem;
+}
+
+ul {
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row nowrap;
+  overflow: hidden;
+}
+ul li {
+  margin: 0 0.5rem;
+}
+ul li:nth-child(1) {
+  margin-right: auto;
+}
+ul li a {
+  text-decoration: none;
+  color: azure;
+}
+nav ul li:nth-child(1) a img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+/* Media Queries */
+
+@media screen and (min-width: 650px) {
+  body {
+    grid-template-areas:
+      'n n n n n n'
+      'h h h h h h'
+      'm m m m m a'
+      'm m m m m a'
+      'f f f f f f';
+  }
+  main {
+    min-height: 700px;
+  }
+}
